@@ -1,5 +1,6 @@
 # Curso de testes com Xunit do site desenvolvedor.IO  
-O objetivo deste curso é entender e se aprofundar em testes unitários e de integração, para melhor aplica-los.  
+O objetivo deste curso é entender e se aprofundar em testes unitários e de integração, para melhor aplicá-los.  
+
 ## Nomenclaturas de teste  
 Para a criação de testes são utilizados alguns padrões para a identificação de cada teste. Segue abaixo os templates:  
 
