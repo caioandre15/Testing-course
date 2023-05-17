@@ -12,6 +12,14 @@ A seção Declarar (Assert) verifica se a ação do método em teste se comporta
 ## Nomenclaturas de teste  
 Para a criação de testes são utilizados alguns padrões para a identificação de cada teste. Segue abaixo os templates:  
 
+#### Padrão 01  
+ObjetoEmTeste_MetodoComportamentoEmTeste_ComportamentoEsperado  
+
+Ex:  
+Pedido_AdicionarPedidoItem_DeveIncrementarUnidadesSeItemJaExistente  
+Estoque_RetirarItem_DeveEnviarEmailSeAbaixoDe10Unidades  
+
+#### Padrão 02  
 MetodoEmTeste_EstadoEmTeste_ComportamentoEsperado
 
 Ex:  
