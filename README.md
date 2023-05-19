@@ -35,7 +35,8 @@ Framework de Mock que será utilizado: Moq
 Instalação do framework  
 ````
 PM> Install-Package Moq  
-````
-
+````  
+Teste com apenas uma entrada [Fact]  
+Teste com multiplas entradas [Theory]  
 
 
