@@ -175,7 +175,7 @@ Ex:
         }
 ````
 
-**InRange** e **NotRange**V alida se um valor está dentro de um range de valores, e que não está respectivamente:
+**InRange** e **NotRange** Valida se um valor está dentro de um range de valores, e que não está respectivamente:
 Ex:  
 ````
         [Theory]
