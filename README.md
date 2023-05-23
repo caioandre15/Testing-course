@@ -41,7 +41,7 @@ Teste com multiplas entradas [Theory]
 
 ### Asserts
 
-**Equal** compara dois valores (Pode ser uma váriavel primitiva ou não, por exemplo uma lista) o primeiro parametro é o valor esperado e o segundo o valor atual.  
+**Equal** compara se dois valores são iguais (Pode ser uma váriavel primitiva ou não, por exemplo uma lista) o primeiro parametro é o valor esperado e o segundo o valor atual.  
 Ex:  
 ````
         [Fact]
@@ -58,10 +58,27 @@ Ex:
         }
 ````
 
+**NotEqual** compara se dois valores não são iguais (Pode ser uma váriavel primitiva ou não, por exemplo uma lista) o primeiro parametro é o valor esperado e o segundo o valor atual.  
+Ex:  
+````
+        [Fact]
+        public void Calculadora_Somar_NaoDeveSerIgual()
+        {
+            // Arrange
+            var calculadora = new Calculadora();
+
+            // Act
+            var result = calculadora.Somar(1.13, 2.23);
+
+            // Assert
+            Assert.NotEqual(3.3, result, precision: 1);
+        }
+````
+
 **Contains** Verifica se um valor existe dentro da coleção ou variável. o primeiro parametro é o trecho ou valor esperado e o segundo o valor com o trecho completo ou lista.  
 Ex:  
 ````
-[Fact]
+        [Fact]
         public void StringsTools_UnirNomes_DeveConterTrecho()
         {
             // Arrange
@@ -78,7 +95,7 @@ Ex:
 **StartsWith** Compara se a string começa conforme o valor passado:
 Ex:  
 ````
-[Fact]
+        [Fact]
         public void StringsTools_UnirNomes_DeveComecarCom()
         {
             //Arrange
@@ -95,7 +112,7 @@ Ex:
 **EndsWith** Compara se a string termina conforme o valor passado:
 Ex:  
 ````
-[Fact]
+        [Fact]
         public void StringsTools_UnirNomes_DeveAcabarCom()
         {
             //Arrange
@@ -112,7 +129,7 @@ Ex:
 **Matches** Valida um texto por uma expressão regular:
 Ex:  
 ````
-[Fact]
+        [Fact]
         public void StringsTools_UnirNomes_ValidarExpressaoRegular()
         {
             //Arrange
@@ -123,6 +140,50 @@ Ex:
 
             // Assert
             Assert.Matches("[A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+", nomeCompleto);
+        }
+````
+
+**True** e **False** Valida se uma expressão é verdadeira e ou falsa, respectivamente:
+Ex:  
+````
+        [Fact]
+        public void Funcionario_apelido_NaoDeveterApelido()
+        {
+            // Arrange & Act
+            var funcionario = new Funcionario("Eduardo", 1000);
+
+            // Assert
+            Assert.Null(funcionario.Apelido);
+
+            // Assert Bool
+            Assert.True(string.IsNullOrEmpty(funcionario.Apelido));
+            Assert.False(funcionario.Apelido?.Length > 0);
+        }
+````
+
+**InRange** e **NotRange**V alida se um valor está dentro de um range de valores, e que não está respectivamente:
+Ex:  
+````
+        [Theory]
+        [InlineData(700)]
+        [InlineData(1500)]
+        [InlineData(2000)]
+        public void Funcionario_Salario_FaixasSalariaisDevemRespeitarNivelProfissional(double salario)
+        {
+            // Arrange & Act
+            var funcionario = new Funcionario("Eduardo", salario);
+
+            // Assert
+            if (funcionario.NivelProfissional == NivelProfissional.Junior)
+                Assert.InRange(funcionario.Salario, 500, 1999);
+
+            if (funcionario.NivelProfissional == NivelProfissional.Pleno)
+                Assert.InRange(funcionario.Salario, 2000, 7999);
+
+            if (funcionario.NivelProfissional == NivelProfissional.Senior)
+                Assert.InRange(funcionario.Salario, 8000, double.MaxValue);
+
+            Assert.NotInRange(funcionario.Salario, 0, 499);
         }
 ````
 
