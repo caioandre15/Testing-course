@@ -39,4 +39,42 @@ PM> Install-Package Moq
 Teste com apenas uma entrada [Fact]  
 Teste com multiplas entradas [Theory]  
 
+### Asserts
+
+**Equal** compara dois valores (Pode ser uma váriavel primitiva ou não, por exemplo uma lista) o primeiro parametro é o valor esperado e o segundo o valor atual.  
+Ex:  
+````
+        [Fact]
+        public void Calculadora_Somar_RetornarValorSoma()
+        {
+            // Arrange
+            var calculadora = new Calculadora();
+
+            // Act
+            var resultado = calculadora.Somar(2, 2);
+
+            // Assert
+            Assert.Equal(4, resultado);
+        }
+````
+
+**Contains** Verifica se um valor existe dentro da coleção ou variável. o primeiro parametro é o trecho ou valor esperado e o segundo o valor com o trecho completo ou lista.  
+Ex:  
+````
+[Fact]
+        public void StringsTools_UnirNomes_DeveConterTrecho()
+        {
+            // Arrange
+            var sut = new StringsTools();
+
+            // Act
+            var nomeCompleto = sut.Unir("Eduardo", "Pires");
+
+            // Assert
+            Assert.Contains("ardo", nomeCompleto);
+        }
+````
+
+
+
 
