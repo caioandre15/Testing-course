@@ -243,7 +243,7 @@ Ex:
         }
 ````
 
-*Throws* Valida se uma exception foi lançada:
+*Throws* Valida se uma exception foi lançada:  
 Ex1:  
 ````
         [Fact]
