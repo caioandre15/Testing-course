@@ -269,7 +269,18 @@ Ex2:
         }
 ````
 
+### Traits
+Serve organizar os testes criando-se categorias para os testes. É importante utilizar em conjunto com o DisplayName para melhorar a visualização:  
+Modelo:  
+````
+[Fact(DisplayName = "Nome do teste")]
+[Trait("Categoria", "Valor da Categoria"]
+````
+Ex:  
 
-
+````
+[Fact(DisplayName = "Novo Cliente Válido")]  
+[Trait("Categoria", "Cliente Trait Testes"]
+````
 
 
