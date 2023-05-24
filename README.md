@@ -313,7 +313,7 @@ Ex. de classe Fixture:
         public void Dispose(){}
     }    
 ````
-Ex: de classe de teste:
+Ex: de classe de teste:  
 ````
 [CollectionDefinition(nameof(ClienteCollection))]
     public class ClienteTesteValido : IClassFixture<ClienteTestsFixture>
@@ -341,4 +341,68 @@ Ex: de classe de teste:
         }
     }
 ````
-      
+### Ordenação de Testes  
+Tem o objetivo de impor uma ordem de execução nos testes, que normalmente são executados aleatoriamente. Faz sentido utilizar esta ordenação para testes de integração, ex: 
+"Cliente é criado no banco de dados e em seguida é realizado o login do mesmo". Já para testes unitários não faz sentido.  
+
+Para realizar a ordenação é necessário criar uma classe chamada **PriorityOrderer** e outra **TestPriorityAttribute**. Que seguem abaixo.  
+````
+[AttributeUsage(AttributeTargets.Method)]
+    public class TestPriorityAttribute : Attribute
+    {
+        public TestPriorityAttribute(int priority)
+        {
+            Priority = priority;
+        }
+
+        public int Priority { get; }
+    }
+
+    public class PriorityOrderer : ITestCaseOrderer
+    {
+        public IEnumerable<TTestCase> OrderTestCases<TTestCase>(IEnumerable<TTestCase> testCases) where TTestCase : ITestCase
+        {
+            var sortedMethods = new SortedDictionary<int, List<TTestCase>>();
+
+            foreach (var testCase in testCases)
+            {
+                var priority = 0;
+
+                foreach (var attr in testCase.TestMethod.Method.GetCustomAttributes((typeof(TestPriorityAttribute).AssemblyQualifiedName)))
+                    priority = attr.GetNamedArgument<int>("Priority");
+
+                GetOrCreate(sortedMethods, priority).Add(testCase);
+            }
+
+            foreach (var list in sortedMethods.Keys.Select(priority => sortedMethods[priority]))
+            {
+                list.Sort((x, y) => StringComparer.OrdinalIgnoreCase.Compare(x.TestMethod.Method.Name, y.TestMethod.Method.Name));
+                foreach (var testCase in list)
+                    yield return testCase;
+            }
+        }
+
+        private static TValue GetOrCreate<TKey, TValue>(IDictionary<TKey, TValue> dictionary, TKey key) where TValue : new()
+        {
+            if (dictionary.TryGetValue(key, out var result)) return result;
+
+            result = new TValue();
+            dictionary[key] = result;
+
+            return result;
+        }
+    }    
+````
+Depois basta adicionar o atributo TesteCase order passando namespace da classe Priority e o namespace da classe de teste. Segue exemplo abaixo.  
+        
+````
+[TestCaseOrderer("Features.Tests.PriorityOrderer", "Features.Tests")]
+    public class OrdemTestes
+    {
+        public static bool Teste1Chamado;
+
+        [Fact(DisplayName = "Teste 04"), TestPriority(3)]
+        [Trait("Categoria", "Ordenacao Testes")]
+        public void Teste04()
+        {}        
+````
