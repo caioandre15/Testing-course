@@ -285,4 +285,60 @@ Ex:
 ### Fixture  
 É uma implementação fixa que permitir o reuso de classes, objetos, banco de dados para uma mesma classe de teste sem se preocupar com o estado, pois framework se encarrega disso. Com ele, deixamos o Arrange dos testes limpo e organizado.  
 
+A classe de teste é criada a cada teste executado, ou seja, se uma classe/objeto/banco foi instanciado irá perder a referência. Sendo recriada a cada execução de cada teste.
 
+Já utilizando o Fixture a classe/objeto/banco é criado e ele fica disponivel a todos os testes da mesma classe que estiverem rodando naquela coleção. 
+Pois, só perde a referência depois que todos os testes terminam.
+
+Como implementar classe Fixture:
+
+1) Criar uma classe ex: ClienteTestsFixture  
+2) Deve implementar o IDisposable (Por essa classe ser reaproveitavel entre as outras classes de testes)  
+3) Criar métodos que serão utilizados em vários testes.  
+4) Criar uma classe de coleção ex: ClienteCollection que implementa a interface ICollectionFixture<> passando a classe ClienteTestsFixture como tipo ICollectionFixture<ClienteTestsFixture> (Dentro do mesmo arquivo da classe)  
+5) Implementar uma definição de coleção: CollectionDefinition(nameof(ClienteCollection))   
+6) Implementar nas classes testes a classe ClienteTestsFixture atráves de injeção de dependência via construtor.  
+7) Depois implementação no Arrange, chamando os métodos.  
+8) Implentar IClassFixture<> em cada classe de teste passando a classe Fixture como tipo IClassFixture<ClienteTestsFixture>.  
+
+Ex. de classe Fixture:  
+````
+    [CollectionDefinition("ClienteCollection")]
+    public class ClienteCollection : ICollectionFixture<ClienteTestsFixture>
+    {}
+    public class ClienteTestsFixture : IDisposable
+    {
+        public Cliente GerarClienteValido(){}
+        public Cliente GerarClienteInvalido(){}
+        public void Dispose(){}
+    }    
+````
+Ex: de classe de teste:
+````
+[CollectionDefinition(nameof(ClienteCollection))]
+    public class ClienteTesteValido : IClassFixture<ClienteTestsFixture>
+    {
+        private readonly ClienteTestsFixture _clienteTestsFixture;
+
+        public ClienteTesteValido(ClienteTestsFixture clienteTestsFixture)
+        {
+            _clienteTestsFixture = clienteTestsFixture;
+        }
+
+        [Fact(DisplayName = "Novo Cliente Válido")]
+        [Trait("Categoria", "Cliente Trait Testes")]
+        public void Cliente_NovoCliente_DeveEstarValido()
+        {
+            // Arrange
+            var cliente = _clienteTestsFixture.GerarClienteValido();
+
+            // Act
+            var result = cliente.EhValido();
+
+            // Assert
+            Assert.True(result);
+            Assert.Equal(0, cliente.ValidationResult.Errors.Count);
+        }
+    }
+````
+      
