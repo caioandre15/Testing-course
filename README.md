@@ -282,5 +282,7 @@ Ex:
 [Fact(DisplayName = "Novo Cliente Válido")]  
 [Trait("Categoria", "Cliente Trait Testes"]
 ````
+### Fixture  
+É uma implementação fixa que permitir o reuso de classes, objetos, banco de dados para uma mesma classe de teste sem se preocupar com o estado, pois framework se encarrega disso. Com ele, deixamos o Arrange dos testes limpo e organizado.  
 
 
