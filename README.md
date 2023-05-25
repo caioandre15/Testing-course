@@ -409,7 +409,7 @@ Depois basta adicionar o atributo TesteCase order passando namespace da classe P
 *Geração de dados aleatórios humanizados*  
 
 Porque gerar dados aleátorios?  
-Em um cenário real em produção existirão cenários diversos de cadastro e ao realizer o teste de unidade para apenas um cenário
+Em um cenário real em produção existirão cenários diversos de cadastro e ao realizar o teste de unidade para apenas um cenário
 estamos realizando um teste probre que pode estar deixando algum cenário despercebido. Por isso utilizamos a geração de dados aleatórios, para garantir que 
 realmente seu cadastro está valido perante a N cenários.  
 
