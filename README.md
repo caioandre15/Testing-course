@@ -283,7 +283,7 @@ Ex:
 [Trait("Categoria", "Cliente Trait Testes"]
 ````
 ### Fixture  
-É uma implementação fixa que permitir o reuso de classes, objetos, banco de dados para uma mesma classe de teste sem se preocupar com o estado, pois framework se encarrega disso. Com ele, deixamos o Arrange dos testes limpo e organizado.  
+É uma implementação fixa que permitir o reuso de classes, objetos, banco de dados para uma mesma classe de teste sem se preocupar com o estado, pois framework se encarrega disso. Com ele, deixamos o Arrange dos testes limpo e organizado.  [Fixture Doc](https://xunit.net/docs/shared-context)
 
 A classe de teste é criada a cada teste executado, ou seja, se uma classe/objeto/banco foi instanciado irá perder a referência. Sendo recriada a cada execução de cada teste.
 
