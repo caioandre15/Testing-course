@@ -406,3 +406,37 @@ Depois basta adicionar o atributo TesteCase order passando namespace da classe P
         public void Teste04()
         {}        
 ````
+*Geração de dados aleatórios humanizados*  
+
+Porque gerar dados aleátorios?  
+Em um cenário real em produção existirão cenários diversos de cadastro e ao realizer o teste de unidade para apenas um cenário
+estamos realizando um teste probre que pode estar deixando algum cenário despercebido. Por isso utilizamos a geração de dados aleatórios, para garantir que 
+realmente seu cadastro está valido perante a N cenários.  
+
+Para isso temos o framework **Bogus** que é um gerador de dados Fake.
+Para instalá-lo:  
+````
+Install-Package Bogus
+````
+Utilização sem construtor:  
+````
+var genero = new Faker().PickRandom<Name.Gender>();
+var email = new Faker().Internet.Email("eduardo", "pires", "gmail");
+var clienteFaker = new Faker<Cliente>();
+clienteFaker.RuleFor(c => c.Nome, (f, c) => f.Name.FirstName());
+````
+
+Com construtor na classe:          
+````
+var cliente = new Faker<Cliente>("pt_BR")
+                .CustomInstantiator(f => new Cliente(
+                    Guid.NewGuid(),
+                    f.Name.FirstName(genero),
+                    f.Name.LastName(genero),
+                    f.Date.Past(80, DateTime.Now.AddYears(-18)),
+                    "",
+                    true,
+                    DateTime.Now))
+                .RuleFor(c => c.Email, (f, c) =>
+                   f.Internet.Email(c.Nome.ToLower(), c.Sobrenome.ToLower()));
+````        
