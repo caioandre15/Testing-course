@@ -413,7 +413,7 @@ Em um cenário real em produção existirão cenários diversos de cadastro e ao
 estamos realizando um teste probre que pode estar deixando algum cenário despercebido. Por isso utilizamos a geração de dados aleatórios, para garantir que 
 realmente seu cadastro está valido perante a N cenários.  
 
-Para isso temos o framework **Bogus** que é um gerador de dados Fake.
+Para isso temos o framework [**Bogus**](https://github.com/bchavez/Bogus) que é um gerador de dados Fake.
 Para instalá-lo:  
 ````
 Install-Package Bogus
