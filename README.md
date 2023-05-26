@@ -490,3 +490,50 @@ No caso acima de publicação de mensagem, o método **Publish()** necessita que
 Como o **Publish()** instancia um cancelation token padrão, também é necessário passar o CancellationToken.None como parâmetro.  
 
 Em ambas verificações é utilizado o método Verify validando a expressão e quantas vezes o método foi chamado. **Verify(expression, times)**.    
+
+### Teste com método que possuí retorno (Setup)  
+
+No caso de um teste de um método que possúi retorno de dados ao realizar o mock precisamos gerar os dados falsos e configurar o método atráves do atribruto da funcionalidade Setup() para que os valores sejam retornados. 
+**Setup** Devemos pensar que Setup significa que eu vou ensinar o método a fazer algo conforme eu quero.  
+Ex:           
+````        
+clienteRepo.Setup(c => c.ObterClientesVariados())
+     .Returns(_clienteTestsBogus.ObterClientesVariados())
+````
+
+Para que os dados falsos sejam gerados em larga escala existe a funcionalidade **Generate** do **Bogus** que nos ajuda muito com isso.  
+Ex:
+````        
+return clientes.Generate(quantidade);        
+````        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
