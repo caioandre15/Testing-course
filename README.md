@@ -454,6 +454,8 @@ install-package  MOQ
 Para instanciar a classe Mock podemos instanciar ao genérico, ou de um tipo especifico, passando a interface, ou seja o contrato daquela classe.  
 Ex:  
 ````
+// Arrange
+var cliente = _clienteTestsFixtureBogus.GerarClienteValido();        
 var clienteRepo = new Mock<IClienteRepository>();
 var mediatr = new Mock<IMediator>();
 ```` 
@@ -463,3 +465,28 @@ Ex:
 ````
 var clienteService = new ClienteService(clienteRepo.object, mediatr.object)
 ````         
+
+Para invocar o método basta utilizar a classe de serviço chamado o método desejado e passando a váriavel com os dados criados aleatoriamente.  
+````
+// Act
+clienteService.Adicionar(cliente);
+````
+
+Para testar se o método foi executado com sucesso, utilizamos o recurso Verify do Mock para validar se os métodos que ele chama foram chamado uma vez (no caso deve ser chamado apenas uma vez pois se trata de um cadastro e uma publicação).
+
+````
+// Assert
+clienteRepo.Verify(c => c.Adicionar(cliente), Times.Once());
+````
+
+No caso acima, para que o teste ocorra corretamente, devemos passar o mesmo objeto criado no Arrange.
+
+````
+// Assert
+mediatr.Verify(m => m.Publish(It.IsAny<INotification>(), CancellationToken.None), Times.Once); 
+````
+
+No caso acima, o método Publish() necessita que seja passado um objeto notification, e para que não seja necessário passar especificamente o objeto Notification instanciando-o um novo mock, podemos passar um objeto genérico (It.IsAny<INotification>()) que implementa a classe INotification.
+Como o Publish() instancia um cancelation token padrão, também é necessário passar o CancellationToken.None.  
+
+Em ambas verificações é utilizado o método Verify validando a expressão e quantas vezes o método foi chamado. Verify(expression, times).    
