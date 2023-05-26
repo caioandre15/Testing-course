@@ -451,7 +451,7 @@ Utilizaremos o framework MOQ. Para instalá-lo selecionar o projeto de teste no 
 install-package  MOQ
 ````
 
-Para instanciar a classe Mock podemos instanciar ao genérico, ou de um tipo especifico, passando a interface, ou seja o contrato daquela classe.  
+Para instanciar a classe Mock podemos instanciar um objeto genérico, ou de um tipo específico, passando a interface, ou seja o contrato daquela classe, conforme abaixo.  
 Ex:  
 ````
 // Arrange
@@ -460,33 +460,33 @@ var clienteRepo = new Mock<IClienteRepository>();
 var mediatr = new Mock<IMediator>();
 ```` 
 
-Agora estas váriaveis são do tipo Mock, para que sejam passadas diretamente como parâmetros da classe de serviço, ou seja, passar o tipo esperado, é necessário inferir o .object em cada uma delas.  
+Agora estas váriaveis são do tipo Mock, para que sejam passadas diretamente como parâmetros na classe de serviço, ou seja, passar o tipo esperado, é necessário inferir o .object em cada uma delas.  
 Ex:  
 ````
 var clienteService = new ClienteService(clienteRepo.object, mediatr.object)
 ````         
 
-Para invocar o método basta utilizar a classe de serviço chamado o método desejado e passando a váriavel com os dados criados aleatoriamente.  
+Para invocar o método basta utilizar a classe de serviço chamando o método desejado e passando a váriavel com os dados criados aleatóriamente.  
 ````
 // Act
 clienteService.Adicionar(cliente);
 ````
 
-Para testar se o método foi executado com sucesso, utilizamos o recurso Verify do Mock para validar se os métodos que ele chama foram chamado uma vez (no caso deve ser chamado apenas uma vez pois se trata de um cadastro e uma publicação).
+Para testar se o método foi executado com sucesso, utilizamos o recurso Verify do Mock para validar se os métodos chamados por ele foram chamado uma vez. (no caso deve ser chamado apenas uma vez pois se trata de um cadastro e uma publicação de mensagem).
 
 ````
 // Assert
 clienteRepo.Verify(c => c.Adicionar(cliente), Times.Once());
 ````
 
-No caso acima, para que o teste ocorra corretamente, devemos passar o mesmo objeto criado no Arrange.
+No caso acima de cadastro de cliente, para que o teste ocorra corretamente, devemos passar o mesmo objeto criado no Arrange.
 
 ````
 // Assert
 mediatr.Verify(m => m.Publish(It.IsAny<INotification>(), CancellationToken.None), Times.Once); 
 ````
 
-No caso acima, o método **Publish()** necessita que seja passado um objeto notification, e para que não seja necessário passar especificamente o objeto Notification instanciando-o um novo mock, podemos passar um objeto genérico **(It.IsAny<INotification>())** que implementa a classe INotification.
-Como o Publish() instancia um cancelation token padrão, também é necessário passar o CancellationToken.None.  
+No caso acima de publicação de mensagem, o método **Publish()** necessita que seja passado um objeto **Notification**, e para que não seja necessário passar especificamente o objeto Notification instanciando um novo mock, podemos passar um objeto genérico **(It.IsAny<INotification>())** que implementa a classe INotification.
+Como o **Publish()** instancia um cancelation token padrão, também é necessário passar o CancellationToken.None como parâmetro.  
 
 Em ambas verificações é utilizado o método Verify validando a expressão e quantas vezes o método foi chamado. **Verify(expression, times)**.    
