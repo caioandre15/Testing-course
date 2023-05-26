@@ -444,7 +444,7 @@ var cliente = new Faker<Cliente>("pt_BR")
 
 Ao tentar realizar o teste de um classe de serviço, percebemos que para instanciar a classe que provisiona os dados fixos e aleatórios não temos problemas (Fixture), mas
 quando tentamos instanciar a classe de serviço percebemos que é solicitado instanciar as classes solicitas em seus parâmetros. Como queremos testar apenas a unidade
-, ou seja, um método em especifico, se faz necessário o uso do MOQ que é uma classe que simula estas intancias das classes solicitadas. Para que não seja, necessário uma conexão com o banco de dados, por exemplo.  
+, ou seja, um método em especifico, se faz necessário o uso do MOQ que é uma classe que simula estas intancias das classes solicitadas. Para que não seja necessário uma conexão com o banco de dados, por exemplo.  
 
 Utilizaremos o framework MOQ. Para instalá-lo selecionar o projeto de teste no Packge Manager e executar o comando:  
 ````
