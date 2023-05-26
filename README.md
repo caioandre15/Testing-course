@@ -486,7 +486,7 @@ No caso acima, para que o teste ocorra corretamente, devemos passar o mesmo obje
 mediatr.Verify(m => m.Publish(It.IsAny<INotification>(), CancellationToken.None), Times.Once); 
 ````
 
-No caso acima, o método Publish() necessita que seja passado um objeto notification, e para que não seja necessário passar especificamente o objeto Notification instanciando-o um novo mock, podemos passar um objeto genérico (It.IsAny<INotification>()) que implementa a classe INotification.
+No caso acima, o método **Publish()** necessita que seja passado um objeto notification, e para que não seja necessário passar especificamente o objeto Notification instanciando-o um novo mock, podemos passar um objeto genérico **(It.IsAny<INotification>())** que implementa a classe INotification.
 Como o Publish() instancia um cancelation token padrão, também é necessário passar o CancellationToken.None.  
 
-Em ambas verificações é utilizado o método Verify validando a expressão e quantas vezes o método foi chamado. Verify(expression, times).    
+Em ambas verificações é utilizado o método Verify validando a expressão e quantas vezes o método foi chamado. **Verify(expression, times)**.    
