@@ -506,6 +506,38 @@ Ex:
 ````        
 return clientes.Generate(quantidade);        
 ````        
+
+### AutoMock
+Automock é uma feature que facilita a criação dos mocks. Com ele não é necessário mais saber quais são dependências do construtor que um classe possuí para ser instanciada, a responsabilidade desta ação que pode ser trabalhosa é delegada para o AutoMock.
+
+Comando para instalar o automock:  
+````
+install-package MOQ.automock
+````
+
+Como utilizar o AutoMock:  
+
+1) Remover os mocks do teste  
+2) Instanciar o AutoMocker  
+````
+var mocker = new AutoMocker();
+````
+3) Criar a instancia do objeto utilizando o método **CreateInstance<CLASSE CONCRETA>()** passando a classe concreta e não a interface.  
+````
+var clienteService = mocker.CreateInstance<ClienteService>();
+````
+4) Para acessar o método Verify no Assert, precisamos utilizar o método **GetMock<INTERFACE>()** passando a interface. Pois, o mock precisa ser exposto para conseguir acessar este método.  
+````
+mocker.GetMock<IClienteService>().Verify()
+````
+Funciona da mesma forma para utilizar o setup():  
+````
+mocker.GetMock<IClienteRepository>().Setup(c => c.ObterTodos())
+                .Returns(_clienteTestsFixtureBogus.ObterClientesVariados());
+````
+
+
+Como refatorar seu uso utilizando uma Fixture e otimizando o construtor:
         
         
         
