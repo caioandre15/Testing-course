@@ -537,7 +537,41 @@ mocker.GetMock<IClienteRepository>().Setup(c => c.ObterTodos())
 ````
 
 
-Como refatorar seu uso utilizando uma Fixture e otimizando o construtor:
+Como refatorar seu uso do AutoMocker utilizando uma Fixture e otimizando o construtor, para não inicializar o AutoMock em cada teste:  
+
+1) Criar um Fixture adicionando duas propriedade públicas que serviram para qualquer teste que implemente esta Fixture  
+````
+public ClienteService ClienteService;
+public AutoMocker Mocker;
+````
+2) Criar um método que irá trabalhar estas instancias e devolve-las.  
+````
+public ClienteService ObterClienteService()
+{
+	Mocker = new AutoMocker();
+	ClienteService = Mocker.CreateInstance<ClienteService>();
+	return ClienteService;
+}
+````
+3) Alterar a Coleção da Fixture da Classe Teste.  
+4) Remover instancia do AutoMocker no Arrange e substituir por esta chamada ao método ObterClienteService():  
+````
+var clienteService = _clienteTestsAutoMockerFixture.ObterClienteService();
+````
+5) No Assert em verify alterar adionar o .Mocker para referênciar corretamente:  
+````
+_clienteTestsAutoMockerFixture.Mocker.GetMock<IClienteRepository>().Verify();
+````
+6) Refatorar construtor adionando a criação do cliente service no mesmo:  
+````
+private readonly ClienteService _clienteService;
+public ClienteServiceAutoMockFixtureTests(ClienteTestsAutoMockerFixture clienteTestsFixtureAutoMocker)
+        {
+            _clienteTestsAutoMockerFixture = clienteTestsFixtureAutoMocker;
+            _clienteService = _clienteTestsAutoMockerFixture.ObterClienteService();
+        }
+````
+
         
         
         
