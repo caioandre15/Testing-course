@@ -572,6 +572,62 @@ public ClienteServiceAutoMockFixtureTests(ClienteTestsAutoMockerFixture clienteT
         }
 ````
 
+### Fluent Assertions  
+
+Instalação do pacote: 
+````
+install-package FluentAssertions
+````
+
+A ideia e substituir os Asserts tradicionais deixando, mas clara a escrita.  
+
+Cliente Válido - Assert True:  
+````
+// Assert Tradicional
+Assert.True(result);
+// Assert FluentValidations
+result.Should().BeTrue();
+````
+Cliente Válido - Assert Equal:  
+````
+// Assert Tradicional
+Assert.Equal(0, cliente.ValodationResult.Errors.Count);
+// Assert FluentValidations
+cliente.ValidationResult.Errors.Should().HaveCount(0);
+````
+
+Cliente inválido - Assert False:  
+````
+// Assert Tradicional
+Assert.False(result);
+// Assert FluentValidations
+result.Should().BeFalse();
+````
+Cliente inválido - Assert NotEqual:  
+````
+// Assert Tradicional
+Assert.NotEqual(0, cliente.ValidationResult.Errors.Count);
+// Assert FluentValidations
+cliente.ValidationResult.Errors.Should().HaveCountGreaterOrEqualTo(15, "Deve possuir erros de validação");
+````
+Neste caso foi utlizada a cláusula **Because** para retornar uma mensagem, quando não atender a validação.  
+
+Cliente Service - Assert True:  
+````
+// Assert Tradicional
+Assert.True(clientes.Any());
+// Assert FluentValidations
+clientes.Should().HaveCountGreaterOrEqualTo(1).And.OnlyHaveUniqueItems();
+````
+Neste caso foi utlizada a cláusula **And** para testar também se são clientes unicos.
+
+Cliente Service - Assert False:  
+````
+// Assert Tradicional
+Assert.False(clientes.Count(c => !c.Ativo) > 0);
+// Assert FluentValidations
+clientes.Should().NotContain(c => !c.Ativo);
+````	
         
         
         
