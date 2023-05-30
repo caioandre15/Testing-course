@@ -579,7 +579,7 @@ Instalação do pacote:
 install-package FluentAssertions
 ````
 
-A ideia e substituir os Asserts tradicionais deixando, mas clara a escrita.  
+A ideia e substituir os Asserts tradicionais deixando mais clara a escrita.  
 
 Cliente Válido - Assert True:  
 ````
