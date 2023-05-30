@@ -629,6 +629,13 @@ Assert.False(clientes.Count(c => !c.Ativo) > 0);
 clientes.Should().NotContain(c => !c.Ativo);
 ````	
         
+### Skip - Serve para pular um teste específico.  
+Ex:  
+````
+[Fact(DisplayName = "Novo Cliente 2.0", Skip = "Nova versão 2.0 quebrando")]
+````
+ 
+
         
         
         
