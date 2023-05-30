@@ -634,7 +634,25 @@ Ex:
 ````
 [Fact(DisplayName = "Novo Cliente 2.0", Skip = "Nova versão 2.0 quebrando")]
 ````
- 
+	
+### Gerar output de teste  
+
+Para isso utilizamos o ITestOutputHelper:  
+````
+readonly ITestOutputHelper _outputHelper;
+
+        public ClienteFluentAssertionsTests(ClienteTestsAutoMockerFixture clienteTestsFixture, 
+                                            ITestOutputHelper outputHelper)
+        {
+            _clienteTestsFixture = clienteTestsFixture;
+            _outputHelper = outputHelper;
+        }
+````
+E no teste adicionamo a mensagem:  
+````
+_outputHelper.WriteLine($"Foram encontrados {cliente.ValidationResult.Errors.Count} erros nesta validação");
+````
+
 
         
         
