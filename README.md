@@ -697,7 +697,13 @@ Configuração para reconhecimento dos testes:
 	"dotnet-test-explorer.testProjectPath": "**/*.Tests.csproj"
 }
 ````        
-        
+
+### Code Coverage  
+
+Serve para que o seu código fonte seja analisado e que seja gerado uma porcentagem de cobertura de código.  
+Como uma boa métrica seria está porcentagem variar acima de 80%.  
+
+Ferramenta de analise opensource: [OpenCover](https://github.com/OpenCover/opencover)
         
         
         
