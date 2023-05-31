@@ -672,7 +672,31 @@ Acessar a pasta Publish via linha de comando e executar o comando abaixo para ro
 dotnet Features.Tests.dll
 ````	
         
-        
+### Rodando os testes no VSCode  
+
+Instalar a extensão:  
+````
+.NET Core Test Explorer
+````
+Configuração para reconhecimento dos testes:
+
+1) Criar a  pasta .vscode na raiz do projeto  
+2) Dentro desta pasta criar a pasta settings.json (Este aquivo servirá para indicar onde está o caminho dos testes)  
+3) Conteúdo do arquivo que indica o caminho para trazer todos os testes que terminem com a nomenclatura .Tests.csproj  
+````
+{
+	"dotnet-test-explorer.testProjectPath": "**/*.Tests.csproj"
+}
+````
+4) Customizando icones:  
+````
+{
+	"dotnet-test-explorer.codeLensFailed": "X",
+	"dotnet-test-explorer.codeLensPassed": "V",
+	"dotnet-test-explorer.codeLensSkipped": "Atenção",
+	"dotnet-test-explorer.testProjectPath": "**/*.Tests.csproj"
+}
+````        
         
         
         
