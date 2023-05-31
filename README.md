@@ -653,7 +653,13 @@ E no teste adicionamo a mensagem:
 _outputHelper.WriteLine($"Foram encontrados {cliente.ValidationResult.Errors.Count} erros nesta validação");
 ````
 
+### PlayList de Teste  
 
+Serve para separar os testes seguindo algum critério específico.  
+Como criar:  
+
+1) Selecionar os testes desejados com o Ctrl e clicar com o botão direito em cima de um dos testes selecionados e selecionar add to playlist na lista de opções sugeridas.  
+2) Criar um nome para a playlist  
         
         
         
