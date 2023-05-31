@@ -660,7 +660,17 @@ Como criar:
 
 1) Selecionar os testes desejados com o Ctrl e clicar com o botão direito em cima de um dos testes selecionados e selecionar add to playlist na lista de opções sugeridas.  
 2) Criar um nome para a playlist  
-        
+
+### Rodando os testes via linha de comando  
+
+Instalar o pacote:  
+````
+install-package xunit.runner.console
+````
+Acessar a pasta Publish via linha de comando e executar o comando abaixo para rodar os testes de uma classe:  
+````
+dotnet Features.Tests.dll
+````	
         
         
         
