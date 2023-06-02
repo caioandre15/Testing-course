@@ -744,9 +744,14 @@ Test Driven Design?
 - Escrever testes depois do código também ajuda, mas pode ocasionar retrabalho caso seja necessário modificar um código para possibilitar o teste.  
 
 1) Você 2) **Testa** um código (Qeu ainda não existe) 3) **Dirigido** pelo seu objetivo 4) De escrever com o melhor Design possível   
+
+Pratical Test-Driven Development unsing C# 7 - John Sonmez	
         
-        
-        
+### Leituras indicadas (TDD):    
+Test-Driven Development - Teste e Design no Mundo Real com .NET -  Mauricio Aniche
+Test-Driven Development - Kent Beck
+Growing Object-Oriented Software, Guided By Tests - Stev Freeman e NaT Pryce
+Pratical Test-Driven Development unsing C# 7 - John Sonmez        
         
         
         
