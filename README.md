@@ -716,7 +716,10 @@ O TDD é composto por um ciclo red/green/refactory.
 3) Refactory: Refatore, melhore o código e teste novamente
 4) Volte para a etapa 1) até o teste passar após a refatoração  
 
-        
+### As três leis do TDD  
+1. Você não pode escrever nehum código até ter escrito um teste que detecte uma possível falha.  
+2. Você não pode escrever mais testes de unidade do que o suficiente para detectar a falha - não compilar é não ter efeito.  
+3. Você não pode escrever mais código do que o suficiente para passar nos testes.          
         
         
         
