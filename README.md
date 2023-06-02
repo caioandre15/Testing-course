@@ -1,7 +1,7 @@
 # Curso de testes com Xunit do site desenvolvedor.IO  
 O objetivo deste curso é entender e se aprofundar em testes unitários e de integração, para melhor aplicá-los.  
 
-## `Testes de Unidades`  
+## Testes de Unidades  
 
 ### Padrão de teste AAA - Arrange, Act e Assert
 
