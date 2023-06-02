@@ -721,11 +721,29 @@ O TDD é composto por um ciclo red/green/refactory.
 2. Você não pode escrever mais testes de unidade do que o suficiente para detectar a falha - não compilar é não ter efeito.  
 3. Você não pode escrever mais código do que o suficiente para passar nos testes.          
         
-### Test Driven Design?  
+### Baby Steps  
+É indicado para desenvolvedores que estão iniciando na prática do TDD.  
+É utilizado quando não se tem muita confiança sobre o código a se escrito e testado.  
+Não existe uma prática exata sobre a utilização baby steps, a recomendação é fazer um processo por vez, identificar as necessidades avaliar o cenário e continuar.  
+
+Ex: Criar um test para um trecho de um método. Depois criar outro teste para um sengundo trecho do método e depois para um teceiro trecho, fazendo uma coisa de cada vez.  
+
+Dicas para começar com TDD  
+
+- Pratique os baby steps e respeite as 3 leis do TDD  
+- Saiba exatamente o que precisa entregar antes de começar  
+- Não deixe para descobrir a regra de negócio durante a codificação  
+- Tenha uma lista de anotações ou uma documentação clara sempre a mão  
+- Minta! No "green" o teste só precisa passar, depois utilize Mocks  
+- Mantenha os teste simples  
+- Após a escrita de alguns testes, analise a possibilidade de reaproveitamento de objetos  
+- Saiba quando usar TDD, nem sempre é vantajoso  
+
+Test Driven Design?  
 - O conceito de TDD pode confundir, não é sobre escrever testes e sim sobre escrever código com um bom design. (código escrito da forma certa é facil de testar)  
 - Escrever testes depois do código também ajuda, mas pode ocasionar retrabalho caso seja necessário modificar um código para possibilitar o teste.  
 
-1) Você 2) **Testa** um código (Qeu ainda não existe) 3) **Dirigido** pelo seu objetivo 4) De escrever com o melhor Design possível           
+1) Você 2) **Testa** um código (Qeu ainda não existe) 3) **Dirigido** pelo seu objetivo 4) De escrever com o melhor Design possível   
         
         
         
