@@ -708,7 +708,7 @@ Como uma boa métrica seria está porcentagem variar acima de 80%.
 Ferramenta de analise opensource: [OpenCover](https://github.com/OpenCover/opencover)
 
 ## TDD - Test Driven Development (Desenvolvimento orientado a testes)
-TDD é uma prática de desenvolvimento onde primeiro é criado o teste de um código que ainda não existe e ao longo deste processo o código já nascendo com teste.
+TDD é uma prática de desenvolvimento onde primeiro é criado o teste de um código que ainda não existe e ao longo deste processo o código já nasce com teste.
 O TDD é composto por um ciclo red/green/refactory.
   
 1) Red: Escrever o teste e assisti-lo falhar  
