@@ -743,9 +743,7 @@ Test Driven Design?
 - O conceito de TDD pode confundir, não é sobre escrever testes e sim sobre escrever código com um bom design. (código escrito da forma certa é facil de testar)  
 - Escrever testes depois do código também ajuda, mas pode ocasionar retrabalho caso seja necessário modificar um código para possibilitar o teste.  
 
-1) Você 2) **Testa** um código (Qeu ainda não existe) 3) **Dirigido** pelo seu objetivo 4) De escrever com o melhor Design possível   
-
-Pratical Test-Driven Development unsing C# 7 - John Sonmez	
+1) Você 2) **Testa** um código (Que ainda não existe) 3) **Dirigido** pelo seu objetivo 4) De escrever com o melhor Design possível   	
         
 ### Leituras indicadas (TDD):    
 Test-Driven Development - Teste e Design no Mundo Real com .NET -  Mauricio Aniche
