@@ -750,6 +750,15 @@ Test-Driven Development - Teste e Design no Mundo Real com .NET -  Mauricio Anic
 Test-Driven Development - Kent Beck
 Growing Object-Oriented Software, Guided By Tests - Stev Freeman e NaT Pryce
 Pratical Test-Driven Development unsing C# 7 - John Sonmez        
+	
+### Teste de Integração
+Doc microsoft teste de integração
+Criar pasta config
+Instalar os pacotes no projeto de teste:  
+````
+Install-Package Microsoft.AspNetCore.Mvc.Testing -Version 2.2.0
+Install-Package Microsoft.AspNetCore.Mvc.App -Version 2.2.0
+````	
         
         
         
