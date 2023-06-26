@@ -495,7 +495,7 @@ Em ambas verificações é utilizado o método Verify validando a expressão e q
 
 ### Teste com método que possuí retorno (Setup)  
 
-No caso de um teste de um método que possúi retorno de dados ao realizar o mock precisamos gerar os dados falsos e configurar o método atráves do atribruto da funcionalidade Setup() para que os valores sejam retornados. 
+No caso de um teste de um método que possúi retorno de dados ao realizar o mock precisamos gerar os dados falsos e configurar o método atráves do atributo da funcionalidade Setup() para que os valores sejam retornados. 
 **Setup** Devemos pensar que Setup significa que eu vou ensinar o método a fazer algo conforme eu quero.  
 Ex:           
 ````        
