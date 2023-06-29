@@ -759,8 +759,13 @@ Instalar os pacotes no projeto de teste:
 Install-Package Microsoft.AspNetCore.Mvc.Testing -Version 2.2.0
 Install-Package Microsoft.AspNetCore.Mvc.App -Version 2.2.0
 ````	
-        
-        
+
+## Teste de integração
+..
+
+## BDD - Behavior Driven Development (Desenvolvimento Guiado por Comportamentos)
+
+
         
         
         
