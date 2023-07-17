@@ -448,7 +448,7 @@ Ao tentar realizar o teste de um classe de serviço, percebemos que para instanc
 quando tentamos instanciar a classe de serviço percebemos que é solicitado instanciar as classes solicitas em seus parâmetros. Como queremos testar apenas a unidade
 , ou seja, um método em especifico, se faz necessário o uso do MOQ que é uma classe que simula estas intancias das classes solicitadas. Para que não seja necessário uma conexão com o banco de dados, por exemplo.  
 
-Utilizaremos o framework MOQ. Para instalá-lo selecionar o projeto de teste no Packge Manager e executar o comando:  
+Utilizaremos o framework MOQ. Para instalá-lo selecionar o projeto de teste no Package Manager e executar o comando:  
 ````
 install-package  MOQ
 ````
